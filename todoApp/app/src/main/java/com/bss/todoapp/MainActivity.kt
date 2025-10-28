@@ -41,6 +41,7 @@ data class TodoItem(
     val text: String,
     var isChecked: Boolean = false
 )
+
 var todoList = listOf(
     TodoItem(
         text = "Wash dishes",
@@ -123,13 +124,14 @@ var todoList = listOf(
         isChecked = true
     )
 )
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             TodoAppTheme {
-ToDoListScreen()
+                ToDoListScreen()
             }
         }
     }
@@ -151,12 +153,14 @@ fun TodoItemScreen(index: Int) {
     var isChecked = remember { todo.isChecked }
 
     Box(
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .padding(8.dp)
             .border(1.dp, color = Color.Black, shape = RoundedCornerShape(15.dp))
             .fillMaxSize()
     ) {
-        Row (
-            modifier = Modifier.padding(8.dp)
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
                 .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
@@ -174,7 +178,7 @@ fun TodoItemScreen(index: Int) {
                 },
             ) {
                 Icon(
-                    imageVector = if (isChecked) Icons.Rounded.CheckCircle else Icons.Rounded.Clear ,
+                    imageVector = if (isChecked) Icons.Rounded.CheckCircle else Icons.Rounded.Clear,
                     contentDescription = "Check",
                     tint = if (isChecked) Color.Green else Color.Red
                 )
